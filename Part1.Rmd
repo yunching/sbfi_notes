@@ -49,11 +49,44 @@ The 3 curves (par, spot and forward) are identical only if they are horizontal. 
 
 ### Forward rates as break-even rates 
 
-Implied spot rates one year forward $(f_{1,2}, f_{1,3}, f_{1,4}, \dots )$ are by construction, euqal to such future spot rates that woul make all government bonds earn the same return over the next year as the (riskless) one-year zero. 
+Implied spot rates one year forward $(f_{1,2}, f_{1,3}, f_{1,4}, \dots )$ are by construction, equal to such future spot rates that woul make all government bonds earn the same return over the next year as the (riskless) one-year zero. 
 
 More generally, if the yield changes implied by the forward rates are subsequently realised, all government bonds, regardless of maturity, earn the same holding-period return. In addition, all self-financed government bond positions (e.g. long a barbell vs short a bullet) earn a return of 0%.
 
+|Forward rates|Bearish positions|Bullish positions|
+|--|--|--|
+|Realised = implied | Same return | Same return |
+|Realised > implied | Profitable | Lose money |
+|Realised < implied | Lose money | Profitable |
+
 In contrast, if the yield curve remains unchanged over a year, each n-year zero earns the corresponding one-year forward rate $f_{n-1, n}$. 
+
+Warning: forward rates are also very low at the long maturities, probablybeing downward-biased estimates of expected returns because they ignore the convexity advantage which is especially large at long maturities.
 
 ### Main influences on the yield curve shape
 
+1. Market's rate expectations
+    * **Pure expectations** assets that all government bonds have the same near-term expected return.
+  
+2. Bond risk premia
+    * Historical experience suggests that bond risk premia are not linear in duration, but that they increase steeply with duration in the front end of the curve and much more slowly after two years. 
+    
+3. Convexity bias
+    * Long-term zeros exhibit very high convexity which tends to depress their yields.
+    * For bonds without embedded options, convexity increases roughly as a square of duration.
+    * Value of convexity increases with the magnitude of yield changes: increasing volatility should make the overall yield curve more concave (curved)
+    
+### Putting the pieces together
+
+* In reality, exact decomposition of the 3 drivers are not possible because:
+    * these components vary over time
+    * are not directly observable but must be estimated
+    
+* PM should take a bearish portfolio position only if he expects rates to rise by more than what the forwards imply. However, if he expects rates to rise less, he should take a bullish position.
+
+### Forwards as RV tools for yield curve trades
+
+* When YC is upward sloping, LT bonds' yield advantage over riskless short-term bonds provides a cushion against rising yields.
+    * Duration extensions are "cheap" when yield curve is very steep, and the cushion (positive carry) is large
+    
+* The one-year forward rate $(f_{n-1, n})$ is, by construction, equal to the n-year zero's rolling yield. 
